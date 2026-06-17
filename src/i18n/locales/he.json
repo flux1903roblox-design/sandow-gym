@@ -1,0 +1,238 @@
+{
+  "app": { "name": "Sandow", "tagline": "כושר ובריאות" },
+  "desktop": {
+    "hint": "Sandow בנויה לטלפון. הוסף אותה למסך הבית לחוויה מלאה — אונליין וגם אופליין.",
+    "f1": "עובד גם בלי אינטרנט",
+    "f2": "מאמן AI אישי",
+    "f3": "מעקב בריאות, אימונים ותזונה"
+  },
+  "nav": { "home": "בית", "workouts": "אימונים", "coach": "מאמן", "profile": "פרופיל" },
+  "common": {
+    "seeAll": "הצג הכל",
+    "start": "התחל",
+    "details": "פרטים",
+    "save": "שמירה",
+    "cancel": "ביטול",
+    "back": "חזרה",
+    "next": "הבא",
+    "done": "סיום",
+    "loading": "טוען…",
+    "comingSoon": "בקרוב",
+    "today": "היום",
+    "week": "שבוע",
+    "month": "חודש",
+    "all": "הכל",
+    "goal": "יעד",
+    "left": "נותרו",
+    "of": "מתוך",
+    "updateAvailable": "עדכון זמין",
+    "refresh": "רענן"
+  },
+  "quickActions": {
+    "title": "פעולה מהירה",
+    "startWorkout": "התחל אימון",
+    "scanFood": "סריקת מזון",
+    "logWater": "תיעוד מים",
+    "startRun": "התחל ריצה"
+  },
+  "boot": { "loading": "מכין את האפליקציה…", "error": "טעינה נכשלה" },
+  "home": {
+    "greeting": "שלום, {{name}}!",
+    "healthy": "{{percent}}% בריא",
+    "pro": "Pro",
+    "fitnessMetrics": "מדדי כושר",
+    "workouts": "אימונים"
+  },
+  "metrics": {
+    "score": "ציון",
+    "hydration": "הידרציה",
+    "calorie": "קלוריות",
+    "steps": "צעדים",
+    "bmi": "BMI",
+    "healthScore": "ציון בריאות",
+    "distance": "מרחק",
+    "activeMinutes": "דקות פעילות",
+    "oxygen": "חמצן",
+    "pressure": "לחץ דם",
+    "sleep": "שינה",
+    "weight": "משקל",
+    "heartRate": "דופק",
+    "units": {
+      "kcal": "קלוריות",
+      "ml": "מ״ל",
+      "km": "ק״מ",
+      "min": "דק׳",
+      "bpm": "פעימות",
+      "steps": "צעדים",
+      "pt": "נק׳",
+      "mmHg": "mmHg",
+      "spo2": "SpO2"
+    }
+  },
+  "healthScore": {
+    "title": "ציון בריאות",
+    "subtitle": "אתה אדם בריא",
+    "axes": {
+      "sleep": "שינה",
+      "bpm": "דופק",
+      "hydration": "הידרציה",
+      "strength": "כוח",
+      "agility": "זריזות",
+      "endurance": "סבולת"
+    }
+  },
+  "bmi": {
+    "title": "מדד BMI",
+    "status": {
+      "underweight": "אתה מעט מתחת למשקל",
+      "normal": "אתה במשקל תקין",
+      "overweight": "אתה מעט מעל המשקל",
+      "obese": "אתה מעל המשקל"
+    }
+  },
+  "activity": {
+    "title": "פעילות",
+    "totalSteps": "סך הצעדים",
+    "startTracking": "התחל מעקב חי",
+    "tracking": "מתעד תנועה…",
+    "stop": "עצור",
+    "live": "חי",
+    "sessionSteps": "{{n}} צעדים בסשן",
+    "motionDenied": "הגישה לחיישני התנועה נדחתה — אפשר בהגדרות הדפדפן.",
+    "motionUnsupported": "חיישני תנועה אינם זמינים במכשיר/דפדפן הזה.",
+    "trackingNote": "נספר מהחיישנים של הטלפון (לא Apple Health), בזמן שהאפליקציה פתוחה."
+  },
+  "calorie": { "title": "קלוריות", "burnLeft": "נותרו {{n}} קלוריות לשרוף" },
+  "hydration": { "title": "הידרציה", "addWater": "הוסף מים", "dailyGoal": "יעד יומי", "addAmount": "+{{n}} מ״ל" },
+  "workouts": {
+    "title": "אימונים",
+    "total": "סה״כ",
+    "withTrainer": "עם {{name}}",
+    "time": "זמן",
+    "calorie": "קלוריות",
+    "sets": "סטים",
+    "exercises": "תרגילים",
+    "start": "התחל",
+    "details": "פרטים",
+    "series": "{{n}} סדרות אימון"
+  },
+  "intensity": { "light": "קל", "moderate": "בינוני", "intense": "אינטנסיבי" },
+  "trainers": {
+    "title": "מאמנים",
+    "professional": "מקצועי",
+    "human": "אנושי",
+    "experience": "ניסיון",
+    "clients": "לקוחות",
+    "rating": "דירוג",
+    "reviews": "ביקורות",
+    "years": "{{n}} שנים"
+  },
+  "session": {
+    "currentlyDoing": "כעת מתאמן: {{activity}}",
+    "pressure": "לחץ דם",
+    "oxygen": "חמצן",
+    "start": "התחל",
+    "pause": "השהה",
+    "resume": "המשך",
+    "finish": "סיום",
+    "completed": "{{activity}} הושלם",
+    "distance": "מרחק",
+    "calorie": "קלוריות",
+    "bpm": "דופק",
+    "duration": "משך כולל"
+  },
+  "coach": {
+    "title": "מאמן AI",
+    "chatsLeft": "{{n}} שיחות נותרו",
+    "placeholder": "כתוב הודעה…",
+    "voiceNote": "הודעה קולית",
+    "read": "נקרא"
+  },
+  "scan": {
+    "title": "ניתוח מזון",
+    "scanning": "סורק…",
+    "enableCamera": "הפעל מצלמה",
+    "capture": "צלם",
+    "result": "תוצאת סריקה",
+    "protein": "חלבון",
+    "carbs": "פחמימות",
+    "fat": "שומן",
+    "addToDiary": "הוסף ליומן"
+  },
+  "route": {
+    "title": "מסלול",
+    "duration": "משך כולל",
+    "pause": "השהה",
+    "resume": "המשך",
+    "finish": "סיום"
+  },
+  "profile": {
+    "basicMember": "חבר בסיסי",
+    "proMember": "חבר Pro",
+    "sandowScore": "ציון Sandow",
+    "weekly": "שבועי",
+    "edit": "עריכה",
+    "share": "שיתוף"
+  },
+  "settings": {
+    "title": "הגדרות",
+    "language": "שפה",
+    "units": "יחידות מידה",
+    "metric": "מטרי",
+    "imperial": "אימפריאלי",
+    "deviceSync": "סנכרון מכשירים",
+    "healthKit": "Apple Health",
+    "healthConnect": "Google Health Connect",
+    "notifications": "התראות",
+    "privacy": "פרטיות",
+    "shareData": "שיתוף נתונים אנונימי",
+    "storage": "אחסון לא מקוון",
+    "storageProtected": "מוגן",
+    "storageBestEffort": "מיטבי",
+    "redoOnboarding": "הצג מחדש את תהליך ההצטרפות",
+    "healthDeclaration": "הצהרת בריאות",
+    "installApp": "התקן אפליקציה",
+    "iosInstallHint": "להתקנה: לחץ על שיתוף ← הוסף למסך הבית",
+    "appInstalled": "האפליקציה מותקנת",
+    "account": "חשבון",
+    "appearance": "שפה ותצוגה"
+  },
+  "notifications": { "title": "התראות", "empty": "אין התראות חדשות", "markAllRead": "סמן הכל כנקרא" },
+  "onboarding": {
+    "stepOf": "שלב {{current}} מתוך {{total}}",
+    "profileTitle": "בוא נכיר",
+    "profileSubtitle": "כמה פרטים כדי להתאים לך את האימונים",
+    "name": "שם מלא",
+    "age": "גיל",
+    "height": "גובה (ס״מ)",
+    "weight": "משקל (ק״ג)",
+    "goal": "מטרה",
+    "goals": {
+      "buildStrength": "בניית כוח",
+      "loseWeight": "ירידה במשקל",
+      "stayFit": "שמירה על כושר",
+      "endurance": "שיפור סבולת"
+    },
+    "declarationTitle": "הצהרת בריאות",
+    "declarationIntro": "מילוי השאלון הרפואי הוא חובה לפי חוק מכוני כושר. תשובה 'כן' לאחת השאלות תחייב הצגת אישור רפואי בתוקף.",
+    "yes": "כן",
+    "no": "לא",
+    "questions": {
+      "heartDisease": "האם הרופא אמר לך שאת/ה סובל/ת ממחלת לב?",
+      "chestPain": "האם את/ה חש/ה כאבים בחזה במנוחה, בפעילות יומיומית או במהלך פעילות גופנית?",
+      "dizzinessFainting": "האם איבדת שיווי משקל עקב סחרחורת, או איבדת את ההכרה?",
+      "cardiacMedication": "האם הנך נזקק/ת לטיפול תרופתי למחלת לב, קוצר נשימה או צפצופים בנשימה?",
+      "familySuddenDeath": "האם קיים רקע משפחתי של מוות פתאומי בגיל מוקדם (גבר לפני 55, אישה לפני 65)?",
+      "supervisedExerciseOrPregnancy": "האם הורו לך ב-5 השנים האחרונות להתאמן רק בהשגחה רפואית, או האם את בהריון?"
+    },
+    "validityNote": "ההצהרה תישמר ותהיה תקפה לשנתיים.",
+    "certificateTitle": "אישור רפואי נדרש",
+    "certificateIntro": "ענית 'כן' על שאלה אחת לפחות. נא להעלות אישור רפואי בתוקף שהונפק ב-3 החודשים האחרונים.",
+    "uploadCertificate": "העלאת אישור",
+    "fileChosen": "נבחר: {{name}}",
+    "approvedTitle": "הכל מוכן!",
+    "approvedSubtitle": "הצהרת הבריאות אושרה. אפשר להתחיל להתאמן.",
+    "continue": "המשך",
+    "finish": "כניסה לאפליקציה"
+  }
+}

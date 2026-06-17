@@ -1,0 +1,238 @@
+{
+  "app": { "name": "Sandow", "tagline": "Fitness & Health" },
+  "desktop": {
+    "hint": "Sandow is built for mobile. Add it to your home screen for the full experience — online and offline.",
+    "f1": "Works fully offline",
+    "f2": "Personal AI coach",
+    "f3": "Health, workout & nutrition tracking"
+  },
+  "nav": { "home": "Home", "workouts": "Workouts", "coach": "Coach", "profile": "Profile" },
+  "common": {
+    "seeAll": "See all",
+    "start": "Start",
+    "details": "Details",
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back",
+    "next": "Next",
+    "done": "Done",
+    "loading": "Loading…",
+    "comingSoon": "Coming soon",
+    "today": "Today",
+    "week": "Week",
+    "month": "Month",
+    "all": "All",
+    "goal": "Goal",
+    "left": "left",
+    "of": "of",
+    "updateAvailable": "Update available",
+    "refresh": "Refresh"
+  },
+  "quickActions": {
+    "title": "Quick action",
+    "startWorkout": "Start workout",
+    "scanFood": "Scan food",
+    "logWater": "Log water",
+    "startRun": "Start run"
+  },
+  "boot": { "loading": "Preparing your app…", "error": "Failed to load" },
+  "home": {
+    "greeting": "Hello, {{name}}!",
+    "healthy": "{{percent}}% Healthy",
+    "pro": "Pro",
+    "fitnessMetrics": "Fitness Metrics",
+    "workouts": "Workouts"
+  },
+  "metrics": {
+    "score": "Score",
+    "hydration": "Hydration",
+    "calorie": "Calorie",
+    "steps": "Steps",
+    "bmi": "BMI",
+    "healthScore": "Health Score",
+    "distance": "Distance",
+    "activeMinutes": "Active minutes",
+    "oxygen": "Oxygen",
+    "pressure": "Pressure",
+    "sleep": "Sleep",
+    "weight": "Weight",
+    "heartRate": "Heart rate",
+    "units": {
+      "kcal": "kcal",
+      "ml": "ml",
+      "km": "km",
+      "min": "min",
+      "bpm": "bpm",
+      "steps": "steps",
+      "pt": "pt",
+      "mmHg": "mmHg",
+      "spo2": "SpO2"
+    }
+  },
+  "healthScore": {
+    "title": "Health Score",
+    "subtitle": "You are a healthy individual",
+    "axes": {
+      "sleep": "Sleep",
+      "bpm": "BPM",
+      "hydration": "Hydration",
+      "strength": "Strength",
+      "agility": "Agility",
+      "endurance": "Endurance"
+    }
+  },
+  "bmi": {
+    "title": "BMI Index",
+    "status": {
+      "underweight": "You are slightly underweight",
+      "normal": "You are at a healthy weight",
+      "overweight": "You are slightly overweight",
+      "obese": "You are overweight"
+    }
+  },
+  "activity": {
+    "title": "Activity",
+    "totalSteps": "total steps",
+    "startTracking": "Start live tracking",
+    "tracking": "Tracking motion…",
+    "stop": "Stop",
+    "live": "Live",
+    "sessionSteps": "{{n}} steps this session",
+    "motionDenied": "Motion sensor access denied — enable it in browser settings.",
+    "motionUnsupported": "Motion sensors aren’t available on this device/browser.",
+    "trackingNote": "Counted from your phone’s sensors (not Apple Health), while the app is open."
+  },
+  "calorie": { "title": "Calorie", "burnLeft": "Burn {{n}} calorie left" },
+  "hydration": { "title": "Hydration", "addWater": "Add water", "dailyGoal": "Daily goal", "addAmount": "+{{n}} ml" },
+  "workouts": {
+    "title": "Workouts",
+    "total": "TOTAL",
+    "withTrainer": "With {{name}}",
+    "time": "Time",
+    "calorie": "Calorie",
+    "sets": "Sets",
+    "exercises": "exercises",
+    "start": "Start",
+    "details": "Details",
+    "series": "{{n}} Series Workout"
+  },
+  "intensity": { "light": "Light", "moderate": "Moderate", "intense": "Intense" },
+  "trainers": {
+    "title": "Trainers",
+    "professional": "Professional",
+    "human": "Human",
+    "experience": "Experience",
+    "clients": "Clients",
+    "rating": "Rating",
+    "reviews": "Reviews",
+    "years": "{{n}}y"
+  },
+  "session": {
+    "currentlyDoing": "Currently doing: {{activity}}",
+    "pressure": "Pressure",
+    "oxygen": "Oxygen",
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Resume",
+    "finish": "Finish",
+    "completed": "{{activity}} Completed",
+    "distance": "Distance",
+    "calorie": "Calorie",
+    "bpm": "BPM",
+    "duration": "Total Duration"
+  },
+  "coach": {
+    "title": "AI Coach",
+    "chatsLeft": "{{n}} Chats left",
+    "placeholder": "Type a message…",
+    "voiceNote": "Voice note",
+    "read": "Read"
+  },
+  "scan": {
+    "title": "Food Analysis",
+    "scanning": "Scanning…",
+    "enableCamera": "Enable camera",
+    "capture": "Capture",
+    "result": "Scan result",
+    "protein": "Protein",
+    "carbs": "Carbs",
+    "fat": "Fat",
+    "addToDiary": "Add to diary"
+  },
+  "route": {
+    "title": "Set Route",
+    "duration": "Total Duration",
+    "pause": "Pause",
+    "resume": "Resume",
+    "finish": "Finish"
+  },
+  "profile": {
+    "basicMember": "Basic Member",
+    "proMember": "Pro Member",
+    "sandowScore": "Sandow Score",
+    "weekly": "Weekly",
+    "edit": "Edit",
+    "share": "Share"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "units": "Units",
+    "metric": "Metric",
+    "imperial": "Imperial",
+    "deviceSync": "Device sync",
+    "healthKit": "Apple Health",
+    "healthConnect": "Google Health Connect",
+    "notifications": "Notifications",
+    "privacy": "Privacy",
+    "shareData": "Share anonymous data",
+    "storage": "Offline storage",
+    "storageProtected": "Protected",
+    "storageBestEffort": "Best-effort",
+    "redoOnboarding": "Replay onboarding flow",
+    "healthDeclaration": "Health declaration",
+    "installApp": "Install app",
+    "iosInstallHint": "To install: tap Share → Add to Home Screen",
+    "appInstalled": "App installed",
+    "account": "Account",
+    "appearance": "Language & display"
+  },
+  "notifications": { "title": "Notifications", "empty": "No new notifications", "markAllRead": "Mark all read" },
+  "onboarding": {
+    "stepOf": "Step {{current}} of {{total}}",
+    "profileTitle": "Let’s get to know you",
+    "profileSubtitle": "A few details so we can tailor your training",
+    "name": "Full name",
+    "age": "Age",
+    "height": "Height (cm)",
+    "weight": "Weight (kg)",
+    "goal": "Goal",
+    "goals": {
+      "buildStrength": "Build strength",
+      "loseWeight": "Lose weight",
+      "stayFit": "Stay fit",
+      "endurance": "Improve endurance"
+    },
+    "declarationTitle": "Health Declaration",
+    "declarationIntro": "Completing this medical questionnaire is mandatory under the gym law. Answering 'Yes' to any question requires a valid medical certificate.",
+    "yes": "Yes",
+    "no": "No",
+    "questions": {
+      "heartDisease": "Has a doctor ever told you that you have a heart condition?",
+      "chestPain": "Do you feel chest pain at rest, during daily activity, or during physical activity?",
+      "dizzinessFainting": "Have you lost balance due to dizziness, or lost consciousness?",
+      "cardiacMedication": "Do you require medication for a heart condition, shortness of breath, or wheezing?",
+      "familySuddenDeath": "Is there a family history of sudden death at an early age (men under 55, women under 65)?",
+      "supervisedExerciseOrPregnancy": "In the last 5 years, were you told to exercise only under medical supervision, or are you pregnant?"
+    },
+    "validityNote": "The declaration is stored and valid for two years.",
+    "certificateTitle": "Medical certificate required",
+    "certificateIntro": "You answered 'Yes' to at least one question. Please upload a valid medical certificate issued within the last 3 months.",
+    "uploadCertificate": "Upload certificate",
+    "fileChosen": "Chosen: {{name}}",
+    "approvedTitle": "You’re all set!",
+    "approvedSubtitle": "Your health declaration is approved. Time to train.",
+    "continue": "Continue",
+    "finish": "Enter the app"
+  }
+}
