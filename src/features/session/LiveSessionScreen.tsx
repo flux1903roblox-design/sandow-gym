@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Activity, Droplet, Heart, Plus, Square, type LucideIcon } from 'lucide-react'
@@ -6,7 +6,7 @@ import { AppBar } from '@/components/ui/AppBar'
 import { Button } from '@/components/ui/Button'
 import { useSessionStore } from '@/stores/session.store'
 import { useUser } from '@/data/hooks/useUser'
-import { completeSession, startSession } from '@/db/repositories/workoutRepo'
+import { activeSession, completeSession, startSession } from '@/db/repositories/workoutRepo'
 import { activityGradient } from '@/lib/gradients'
 import { formatDuration } from '@/lib/format'
 import { cn } from '@/lib/cn'
@@ -40,12 +40,32 @@ export default function LiveSessionScreen() {
   const setBpm = useSessionStore((s) => s.setBpm)
   const reset = useSessionStore((s) => s.reset)
   const [sets, setSets] = useState(0)
+  const [resolvedId, setResolvedId] = useState<string | undefined>(sessionId)
+  const initRef = useRef(false)
 
-  // Entered directly via quick action → create a session on the fly.
+  // Resolve the session exactly once (ref guards React StrictMode's double-invoke):
+  //  - arrived from a program "Start" → use the session it created;
+  //  - arrived via quick action → reuse an existing active session, else create one.
   useEffect(() => {
-    if (!sessionId && user) {
-      void startSession(user.id, 'Boxing').then((s) => start(s.id, 'Boxing'))
+    if (initRef.current) return
+    if (sessionId) {
+      initRef.current = true
+      setResolvedId(sessionId)
+      return
     }
+    if (!user) return // wait for the user record to load
+    initRef.current = true
+    void (async () => {
+      const existing = await activeSession()
+      if (existing) {
+        setResolvedId(existing.id)
+        start(existing.id, existing.activity)
+      } else {
+        const s = await startSession(user.id, 'Boxing')
+        setResolvedId(s.id)
+        start(s.id, 'Boxing')
+      }
+    })()
   }, [sessionId, user, start])
 
   useEffect(() => {
@@ -60,16 +80,16 @@ export default function LiveSessionScreen() {
 
   const finish = async () => {
     const st = useSessionStore.getState()
-    const sid = st.sessionId
-    if (sid) {
+    const id = resolvedId ?? st.sessionId ?? (await activeSession())?.id
+    if (id) {
       await completeSession(
-        sid,
+        id,
         { calories: 120 + Math.round(st.elapsedSec * 0.15), durationSec: st.elapsedSec, avgBpm: st.bpm },
         'Post Workout Stretch',
       )
     }
     reset()
-    navigate(sid ? `/session/${sid}/summary` : '/home', { replace: true })
+    navigate(id ? `/session/${id}/summary` : '/home', { replace: true })
   }
 
   const act = activity || 'Boxing'
