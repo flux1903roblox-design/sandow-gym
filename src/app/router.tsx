@@ -27,6 +27,7 @@ import OnboardingScreen from '@/features/onboarding/OnboardingScreen'
 import BuilderScreen from '@/features/workout/BuilderScreen'
 import ActiveWorkoutScreen from '@/features/workout/ActiveWorkoutScreen'
 import HistoryScreen from '@/features/workout/HistoryScreen'
+import PlanDetailScreen from '@/features/workout/PlanDetailScreen'
 
 // Screens are swapped in from Placeholder as each phase lands.
 // HashRouter keeps client-side routing working on static hosts (e.g. GitHub Pages
@@ -61,6 +62,7 @@ export const router = createHashRouter([
       { path: 'workout/build', element: <BuilderScreen /> },
       { path: 'workout/active', element: <ActiveWorkoutScreen /> },
       { path: 'workout/history', element: <HistoryScreen /> },
+      { path: 'workout/plan/:id', element: <PlanDetailScreen /> },
       { path: 'session/live', element: <LiveSessionScreen /> },
       { path: 'session/:id/summary', element: <SummaryScreen /> },
       { path: 'scan', element: <FoodScanScreen /> },

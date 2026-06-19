@@ -78,6 +78,13 @@ export default function ActiveWorkoutScreen() {
 
   const onComplete = (i: number) => {
     const wasDone = ex.sets[i].completed
+    if (!wasDone) {
+      // Persist the values shown for this set (defaults included) so logged volume matches what the user sees.
+      store.updateSet(currentIndex, i, {
+        reps: ex.sets[i].reps ?? REP_DEFAULT,
+        weight: ex.sets[i].weight ?? WEIGHT_DEFAULT,
+      })
+    }
     store.toggleSetComplete(currentIndex, i)
     if (!wasDone) {
       store.startRest(REST_SECONDS)
@@ -99,7 +106,7 @@ export default function ActiveWorkoutScreen() {
       e.sets.forEach((s) => {
         if (s.completed) {
           totalSets++
-          totalVolume += (s.reps ?? 0) * (s.weight ?? 0)
+          totalVolume += (s.reps ?? REP_DEFAULT) * (s.weight ?? WEIGHT_DEFAULT)
         }
       }),
     )

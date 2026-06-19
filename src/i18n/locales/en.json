@@ -282,5 +282,15 @@
     "thisWeek": "This week",
     "sets": "Sets",
     "exercises": "Exercises"
+  },
+  "plans": {
+    "title": "Training plans",
+    "weeks": "{{n}} weeks",
+    "perWeek": "{{n}}/week",
+    "week": "Week {{n}}",
+    "start": "Start session",
+    "sessions": "sessions",
+    "exercises": "exercises",
+    "seeAll": "All plans"
   }
 }
