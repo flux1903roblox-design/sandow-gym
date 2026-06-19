@@ -21,6 +21,7 @@ interface ActiveWorkoutState {
   exercises: ActiveExercise[]
   muscles: string[]
   restEndsAt?: number
+  restSeconds?: number
   start: (exerciseIds: string[], muscles: string[]) => void
   addSet: (exIdx: number) => void
   updateSet: (exIdx: number, setIdx: number, patch: Partial<ActiveSet>) => void
@@ -28,6 +29,7 @@ interface ActiveWorkoutState {
   goTo: (idx: number) => void
   swap: (exIdx: number, newId: string) => void
   startRest: (seconds: number) => void
+  addRestTime: (seconds: number) => void
   clearRest: () => void
   discard: () => void
 }
@@ -74,8 +76,10 @@ export const useActiveWorkout = create<ActiveWorkoutState>()(
       goTo: (idx) => set({ currentIndex: idx }),
       swap: (exIdx, newId) =>
         set((s) => ({ exercises: s.exercises.map((e, i) => (i === exIdx ? { ...e, exerciseId: newId } : e)) })),
-      startRest: (seconds) => set({ restEndsAt: Date.now() + seconds * 1000 }),
-      clearRest: () => set({ restEndsAt: undefined }),
+      startRest: (seconds) => set({ restEndsAt: Date.now() + seconds * 1000, restSeconds: seconds }),
+      addRestTime: (seconds) =>
+        set((s) => (s.restEndsAt ? { restEndsAt: s.restEndsAt + seconds * 1000, restSeconds: (s.restSeconds || 0) + seconds } : s)),
+      clearRest: () => set({ restEndsAt: undefined, restSeconds: undefined }),
       discard: () =>
         set({ status: 'idle', startedAt: undefined, currentIndex: 0, exercises: [], muscles: [], restEndsAt: undefined }),
     }),

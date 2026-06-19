@@ -252,7 +252,9 @@
     "shuffle": "בנייה אוטומטית",
     "tapMuscles": "הקש על השרירים שתרצה לאמן",
     "chooseEquipment": "איזה ציוד יש לך?",
-    "all": "הכול"
+    "all": "הכול",
+    "search": "חיפוש תרגיל…",
+    "quickStart": "התחלה מהירה"
   },
   "active": {
     "title": "אימון פעיל",
@@ -265,7 +267,10 @@
     "restActive": "מנוחה {{s}} שנ׳",
     "discard": "בטל",
     "progress": "{{n}} מתוך {{total}}",
-    "noWorkout": "אין אימון פעיל"
+    "noWorkout": "אין אימון פעיל",
+    "skip": "דלג",
+    "plus15": "+15 שנ׳",
+    "nextExercise": "התרגיל הבא"
   },
   "history": {
     "title": "היסטוריה",

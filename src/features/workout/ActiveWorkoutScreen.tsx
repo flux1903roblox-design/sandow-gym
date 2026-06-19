@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Check, ChevronLeft, ChevronRight, Plus, Timer, X } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Check, ChevronLeft, ChevronRight, Minus, Plus, Timer, X } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { useActiveWorkout } from '@/stores/activeWorkout.store'
 import { useUser } from '@/data/hooks/useUser'
@@ -14,20 +15,45 @@ import { useUiStore } from '@/stores/ui.store'
 import { cn } from '@/lib/cn'
 import type { LoggedSession } from '@/db/engineTypes'
 
+const REP_DEFAULT = 10
+const WEIGHT_DEFAULT = 20
+const REST_SECONDS = 90
+
+function Stepper({ value, onChange, step }: { value: number; onChange: (v: number) => void; step: number }) {
+  return (
+    <div className="flex items-center gap-1.5">
+      <button
+        onClick={() => onChange(Math.max(0, Math.round((value - step) * 10) / 10))}
+        className="grid h-9 w-9 place-items-center rounded-full bg-surface-2 active:scale-90"
+        aria-label="decrease"
+      >
+        <Minus className="h-4 w-4" />
+      </button>
+      <span className="w-11 text-center text-xl font-extrabold tabular">{value}</span>
+      <button
+        onClick={() => onChange(Math.round((value + step) * 10) / 10)}
+        className="grid h-9 w-9 place-items-center rounded-full bg-surface-2 active:scale-90"
+        aria-label="increase"
+      >
+        <Plus className="h-4 w-4" />
+      </button>
+    </div>
+  )
+}
+
 export default function ActiveWorkoutScreen() {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const locale = useUiStore((s) => s.locale)
   const user = useUser()
   const store = useActiveWorkout()
-  const { status, startedAt, currentIndex, exercises, restEndsAt } = store
+  const { status, startedAt, currentIndex, exercises, restEndsAt, restSeconds } = store
   const [now, setNow] = useState(Date.now())
 
   useEffect(() => {
     const id = setInterval(() => setNow(Date.now()), 1000)
     return () => clearInterval(id)
   }, [])
-
   useEffect(() => {
     if (restEndsAt && now >= restEndsAt) store.clearRest()
   }, [now, restEndsAt, store])
@@ -50,6 +76,21 @@ export default function ActiveWorkoutScreen() {
   const ex = exercises[currentIndex]
   const cat = exerciseById(ex.exerciseId)
 
+  const onComplete = (i: number) => {
+    const wasDone = ex.sets[i].completed
+    store.toggleSetComplete(currentIndex, i)
+    if (!wasDone) {
+      store.startRest(REST_SECONDS)
+      const next = ex.sets[i + 1]
+      if (next && next.reps == null) {
+        store.updateSet(currentIndex, i + 1, {
+          reps: ex.sets[i].reps ?? REP_DEFAULT,
+          weight: ex.sets[i].weight ?? WEIGHT_DEFAULT,
+        })
+      }
+    }
+  }
+
   const finish = async () => {
     if (!user) return
     let totalVolume = 0
@@ -58,7 +99,7 @@ export default function ActiveWorkoutScreen() {
       e.sets.forEach((s) => {
         if (s.completed) {
           totalSets++
-          totalVolume += (s.reps || 0) * (s.weight || 0)
+          totalVolume += (s.reps ?? 0) * (s.weight ?? 0)
         }
       }),
     )
@@ -79,6 +120,8 @@ export default function ActiveWorkoutScreen() {
     store.discard()
     navigate('/workout/history', { replace: true })
   }
+
+  const completedSets = ex.sets.filter((s) => s.completed).length
 
   return (
     <div className="flex h-full flex-col">
@@ -101,77 +144,93 @@ export default function ActiveWorkoutScreen() {
       </header>
 
       <div className="no-scrollbar flex-1 overflow-y-auto px-5 py-4">
-        <h1 className="text-xl font-extrabold">{cat ? exerciseName(cat, locale) : ex.exerciseId}</h1>
-        {cat && <p className="text-sm text-muted">{MUSCLE_LABELS[cat.primaryMuscle][locale]}</p>}
-
-        <div className="mt-4 space-y-2">
-          <div className="flex items-center gap-3 px-2 text-xs text-muted">
-            <span className="w-8">{t('active.set')}</span>
-            <span className="flex-1 text-center">{t('active.reps')}</span>
-            <span className="flex-1 text-center">{t('active.kg')}</span>
-            <span className="w-10" />
-          </div>
-          {ex.sets.map((s, i) => (
-            <div key={i} className={cn('flex items-center gap-3 rounded-2xl p-2', s.completed ? 'bg-success/15' : 'bg-surface')}>
-              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-surface-2 text-sm font-bold">{i + 1}</span>
-              <input
-                type="number"
-                inputMode="numeric"
-                value={s.reps ?? ''}
-                onChange={(e) => store.updateSet(currentIndex, i, { reps: e.target.value === '' ? undefined : Number(e.target.value) })}
-                className="h-10 w-full flex-1 rounded-xl bg-surface-2 text-center outline-none focus:ring-2 focus:ring-primary/60"
-              />
-              <input
-                type="number"
-                inputMode="decimal"
-                value={s.weight ?? ''}
-                onChange={(e) => store.updateSet(currentIndex, i, { weight: e.target.value === '' ? undefined : Number(e.target.value) })}
-                className="h-10 w-full flex-1 rounded-xl bg-surface-2 text-center outline-none focus:ring-2 focus:ring-primary/60"
-              />
-              <button
-                onClick={() => store.toggleSetComplete(currentIndex, i)}
-                aria-label="complete set"
-                className={cn('grid h-10 w-10 shrink-0 place-items-center rounded-xl', s.completed ? 'bg-success text-success-fg' : 'bg-surface-2 text-muted')}
-              >
-                <Check className="h-5 w-5" />
-              </button>
-            </div>
-          ))}
-          <button
-            onClick={() => store.addSet(currentIndex)}
-            className="flex w-full items-center justify-center gap-2 rounded-2xl border border-dashed border-border py-2.5 text-sm text-muted"
-          >
-            <Plus className="h-4 w-4" />
-            {t('active.addSet')}
-          </button>
-        </div>
-
-        <div className="mt-5">
-          {restRemain > 0 ? (
-            <div className="flex items-center justify-between rounded-2xl bg-secondary/15 px-4 py-3 text-secondary">
-              <span className="flex items-center gap-2 font-semibold">
-                <Timer className="h-4 w-4" />
-                {t('active.restActive', { s: restRemain })}
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.22, ease: 'easeOut' }}
+        >
+            <div className="flex items-baseline justify-between">
+              <h1 className="text-xl font-extrabold">{cat ? exerciseName(cat, locale) : ex.exerciseId}</h1>
+              <span className="text-sm text-muted tabular">
+                {completedSets}/{ex.sets.length}
               </span>
-              <button onClick={() => store.clearRest()} className="text-sm font-semibold">
-                ✕
+            </div>
+            {cat && <p className="text-sm text-muted">{MUSCLE_LABELS[cat.primaryMuscle][locale]}</p>}
+
+            <div className="mt-4 space-y-2.5">
+              {ex.sets.map((s, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.04 }}
+                  className={cn(
+                    'flex items-center gap-2 rounded-2xl p-2.5 transition-colors',
+                    s.completed ? 'bg-success/15 ring-1 ring-success/40' : 'bg-surface',
+                  )}
+                >
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-surface-2 text-sm font-bold">{i + 1}</span>
+                  <div className="flex flex-1 flex-col items-center gap-0.5">
+                    <span className="text-[10px] uppercase tracking-wide text-muted">{t('active.reps')}</span>
+                    <Stepper value={s.reps ?? REP_DEFAULT} step={1} onChange={(v) => store.updateSet(currentIndex, i, { reps: v })} />
+                  </div>
+                  <div className="flex flex-1 flex-col items-center gap-0.5">
+                    <span className="text-[10px] uppercase tracking-wide text-muted">{t('active.kg')}</span>
+                    <Stepper value={s.weight ?? WEIGHT_DEFAULT} step={2.5} onChange={(v) => store.updateSet(currentIndex, i, { weight: v })} />
+                  </div>
+                  <button
+                    onClick={() => onComplete(i)}
+                    aria-label="complete set"
+                    className={cn(
+                      'grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-transform active:scale-90',
+                      s.completed ? 'bg-success text-success-fg' : 'bg-surface-2 text-muted',
+                    )}
+                  >
+                    <Check className="h-5 w-5" />
+                  </button>
+                </motion.div>
+              ))}
+              <button
+                onClick={() => store.addSet(currentIndex)}
+                className="flex w-full items-center justify-center gap-2 rounded-2xl border border-dashed border-border py-2.5 text-sm text-muted"
+              >
+                <Plus className="h-4 w-4" />
+                {t('active.addSet')}
               </button>
             </div>
-          ) : (
-            <div className="flex gap-2">
-              {[60, 90, 120].map((sec) => (
-                <button
-                  key={sec}
-                  onClick={() => store.startRest(sec)}
-                  className="flex-1 rounded-2xl bg-surface-2 py-2.5 text-sm font-semibold text-muted"
-                >
-                  {t('active.rest')} {sec}s
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
+        </motion.div>
       </div>
+
+      <AnimatePresence>
+        {restRemain > 0 && (
+          <motion.div
+            initial={{ y: 70, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 70, opacity: 0 }}
+            className="mx-4 mb-2 rounded-2xl bg-secondary p-4 text-white shadow-glow-blue"
+          >
+            <div className="flex items-center justify-between">
+              <span className="flex items-center gap-2 font-bold">
+                <Timer className="h-4 w-4" />
+                {t('active.rest')}
+              </span>
+              <span className="text-2xl font-black tabular">{restRemain}s</span>
+            </div>
+            <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/25">
+              <div className="h-full rounded-full bg-white transition-all duration-1000 ease-linear" style={{ width: `${(restRemain / (restSeconds || REST_SECONDS)) * 100}%` }} />
+            </div>
+            <div className="mt-2.5 flex gap-2">
+              <button onClick={() => store.addRestTime(15)} className="flex-1 rounded-xl bg-white/20 py-1.5 text-sm font-semibold">
+                {t('active.plus15')}
+              </button>
+              <button onClick={() => store.clearRest()} className="flex-1 rounded-xl bg-white/20 py-1.5 text-sm font-semibold">
+                {t('active.skip')}
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="border-t border-border bg-bg p-4 pb-safe-b">
         <div className="flex items-center gap-3">
@@ -185,7 +244,7 @@ export default function ActiveWorkoutScreen() {
           </button>
           {currentIndex < exercises.length - 1 ? (
             <Button block onClick={() => store.goTo(currentIndex + 1)}>
-              {t('common.next')}
+              {t('active.nextExercise')}
               <ChevronRight className="h-4 w-4 rtl:-scale-x-100" />
             </Button>
           ) : (

@@ -252,7 +252,9 @@
     "shuffle": "Auto-build",
     "tapMuscles": "Tap the muscles you want to train",
     "chooseEquipment": "What equipment do you have?",
-    "all": "All"
+    "all": "All",
+    "search": "Search exercise…",
+    "quickStart": "Quick start"
   },
   "active": {
     "title": "Active workout",
@@ -265,7 +267,10 @@
     "restActive": "Rest {{s}}s",
     "discard": "Discard",
     "progress": "{{n}} of {{total}}",
-    "noWorkout": "No active workout"
+    "noWorkout": "No active workout",
+    "skip": "Skip",
+    "plus15": "+15s",
+    "nextExercise": "Next exercise"
   },
   "history": {
     "title": "History",
