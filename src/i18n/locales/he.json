@@ -235,5 +235,39 @@
     "approvedSubtitle": "הצהרת הבריאות אושרה. אפשר להתחיל להתאמן.",
     "continue": "המשך",
     "finish": "כניסה לאפליקציה"
+  },
+  "builder": {
+    "title": "בנה אימון",
+    "equipment": "ציוד",
+    "muscles": "שרירים",
+    "exercises": "תרגילים",
+    "selected": "{{n}} נבחרו",
+    "start": "התחל אימון",
+    "noResults": "אין תרגילים מתאימים — שנה את הסינון",
+    "swap": "החלף"
+  },
+  "active": {
+    "title": "אימון פעיל",
+    "set": "סט",
+    "reps": "חזרות",
+    "kg": "ק״ג",
+    "finish": "סיים אימון",
+    "addSet": "הוסף סט",
+    "rest": "מנוחה",
+    "restActive": "מנוחה {{s}} שנ׳",
+    "discard": "בטל",
+    "progress": "{{n}} מתוך {{total}}",
+    "noWorkout": "אין אימון פעיל"
+  },
+  "history": {
+    "title": "היסטוריה",
+    "empty": "עדיין אין אימונים שתועדו. בנה אימון מה־+",
+    "streak": "רצף",
+    "days": "ימים",
+    "workouts": "אימונים",
+    "volume": "נפח כולל",
+    "thisWeek": "השבוע",
+    "sets": "סטים",
+    "exercises": "תרגילים"
   }
 }

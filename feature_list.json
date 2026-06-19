@@ -1,0 +1,11 @@
+{
+  "project": "Sandow workout engine (workout.cool parity, adapted to Vite+Dexie PWA)",
+  "features": [
+    { "id": "we-01-catalog", "phase": 1, "status": "done", "acceptance": "Bilingual (he/en) catalog of 50 exercises with muscle/equipment/type/mechanics + label maps + JS filter (ANY equipment AND ANY muscle). Verified: builder renders 50 exercises in Hebrew." },
+    { "id": "we-02-db", "phase": 1, "status": "done", "acceptance": "Dexie v2 loggedSessions table + repo/hooks; existing tables untouched. Verified: a finished workout writes one loggedSession (sets/volume/exercises/duration correct)." },
+    { "id": "we-03-builder-funnel", "phase": 2, "status": "done", "acceptance": "Equipment + muscle chips filter the catalog; tap to add/remove exercises; Start launches the session. Verified end-to-end." },
+    { "id": "we-04-active-session", "phase": 3, "status": "done", "acceptance": "Zustand+localStorage store; per-set reps/weight, complete toggles, chronometer from startedAt (survives reload), rest timer, prev/next. Finish saves exactly one loggedSession then clears local state. Verified: log set 10x50 → saved volume 500." },
+    { "id": "we-05-history-stats", "phase": 4, "status": "done", "acceptance": "History list + 112-day contribution heatmap + streak + this-week + total volume from loggedSessions. Verified rendering with a real logged session." },
+    { "id": "we-06-programs", "phase": 5, "status": "todo", "acceptance": "Optional structured multi-session programs. Premium gating is a documented no-op in the free PWA (everything unlocked). Deferred." }
+  ]
+}

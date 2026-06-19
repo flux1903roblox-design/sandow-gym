@@ -17,7 +17,7 @@ export function QuickActionSheet() {
   }
 
   const actions: { icon: LucideIcon; label: string; to: string; tone: string }[] = [
-    { icon: Dumbbell, label: t('quickActions.startWorkout'), to: '/session/live', tone: 'bg-primary text-primary-fg' },
+    { icon: Dumbbell, label: t('builder.title'), to: '/workout/build', tone: 'bg-primary text-primary-fg' },
     { icon: Camera, label: t('quickActions.scanFood'), to: '/scan', tone: 'bg-secondary text-secondary-fg' },
     { icon: Droplet, label: t('quickActions.logWater'), to: '/activity/hydration', tone: 'bg-secondary text-secondary-fg' },
     { icon: MapPin, label: t('quickActions.startRun'), to: '/route', tone: 'bg-success text-success-fg' },

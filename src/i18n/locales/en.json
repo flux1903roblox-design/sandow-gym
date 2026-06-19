@@ -235,5 +235,39 @@
     "approvedSubtitle": "Your health declaration is approved. Time to train.",
     "continue": "Continue",
     "finish": "Enter the app"
+  },
+  "builder": {
+    "title": "Build workout",
+    "equipment": "Equipment",
+    "muscles": "Muscles",
+    "exercises": "Exercises",
+    "selected": "{{n}} selected",
+    "start": "Start workout",
+    "noResults": "No matching exercises — change the filter",
+    "swap": "Swap"
+  },
+  "active": {
+    "title": "Active workout",
+    "set": "Set",
+    "reps": "Reps",
+    "kg": "kg",
+    "finish": "Finish workout",
+    "addSet": "Add set",
+    "rest": "Rest",
+    "restActive": "Rest {{s}}s",
+    "discard": "Discard",
+    "progress": "{{n}} of {{total}}",
+    "noWorkout": "No active workout"
+  },
+  "history": {
+    "title": "History",
+    "empty": "No workouts logged yet. Build one from the +",
+    "streak": "Streak",
+    "days": "days",
+    "workouts": "Workouts",
+    "volume": "Total volume",
+    "thisWeek": "This week",
+    "sets": "Sets",
+    "exercises": "Exercises"
   }
 }

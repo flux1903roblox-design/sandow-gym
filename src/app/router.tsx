@@ -24,6 +24,9 @@ import ProfileScreen from '@/features/profile/ProfileScreen'
 import SettingsScreen from '@/features/settings/SettingsScreen'
 import NotificationsScreen from '@/features/notifications/NotificationsScreen'
 import OnboardingScreen from '@/features/onboarding/OnboardingScreen'
+import BuilderScreen from '@/features/workout/BuilderScreen'
+import ActiveWorkoutScreen from '@/features/workout/ActiveWorkoutScreen'
+import HistoryScreen from '@/features/workout/HistoryScreen'
 
 // Screens are swapped in from Placeholder as each phase lands.
 // HashRouter keeps client-side routing working on static hosts (e.g. GitHub Pages
@@ -55,6 +58,9 @@ export const router = createHashRouter([
       },
       // Full-screen routes (no tab bar):
       { path: 'workouts/:id', element: <ProgramDetailScreen /> },
+      { path: 'workout/build', element: <BuilderScreen /> },
+      { path: 'workout/active', element: <ActiveWorkoutScreen /> },
+      { path: 'workout/history', element: <HistoryScreen /> },
       { path: 'session/live', element: <LiveSessionScreen /> },
       { path: 'session/:id/summary', element: <SummaryScreen /> },
       { path: 'scan', element: <FoodScanScreen /> },

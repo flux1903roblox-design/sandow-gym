@@ -1,4 +1,5 @@
 import Dexie, { type Table } from 'dexie'
+import type { LoggedSession } from './engineTypes'
 import type {
   AppNotification,
   ChatMessage,
@@ -33,6 +34,7 @@ export class SandowDB extends Dexie {
   routes!: Table<RouteTrack, string>
   notifications!: Table<AppNotification, string>
   settings!: Table<AppSettings, string>
+  loggedSessions!: Table<LoggedSession, string>
 
   constructor() {
     super('sandow')
@@ -52,6 +54,10 @@ export class SandowDB extends Dexie {
       routes: 'id, sessionId',
       notifications: 'id, userId, createdAt',
       settings: 'id',
+    })
+    // v2 — workout engine (additive; v1 tables carry over unchanged).
+    this.version(2).stores({
+      loggedSessions: 'id, userId, startedAt',
     })
   }
 }
