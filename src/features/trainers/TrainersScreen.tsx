@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { Avatar } from '@/components/ui/Avatar'
 import { useTrainers } from '@/data/hooks/useTrainers'
+import { TRAINER_PHOTO } from '@/assets/img'
 
 export default function TrainersScreen() {
   const { t } = useTranslation()
@@ -18,7 +19,7 @@ export default function TrainersScreen() {
       <div className="space-y-3 px-5 pb-6">
         {trainers.map((tr) => (
           <Card key={tr.id} interactive onClick={() => navigate(`/trainers/${tr.id}`)} className="flex items-center gap-4 p-4">
-            <Avatar name={tr.name} size="lg" />
+            <Avatar name={tr.name} src={tr.name === 'Farnese Vandimion' ? TRAINER_PHOTO : undefined} size="lg" />
             <div className="min-w-0 flex-1">
               <h3 className="truncate font-bold">{tr.name}</h3>
               <div className="mt-1 flex flex-wrap gap-1.5">

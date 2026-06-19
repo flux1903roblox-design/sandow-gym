@@ -7,6 +7,7 @@ import { useSession } from '@/data/hooks/useWorkouts'
 import { formatInt } from '@/lib/format'
 import { useUiStore } from '@/stores/ui.store'
 import { cn } from '@/lib/cn'
+import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
 
 export default function SummaryScreen() {
   const { id } = useParams()
@@ -36,7 +37,9 @@ export default function SummaryScreen() {
       <div className="my-8">
         <ProgressRing value={0.85} size={224} stroke={18}>
           <div>
-            <div className="text-5xl font-black tabular leading-none">{formatInt(totals.calories, locale)}</div>
+            <div className="text-5xl font-black tabular leading-none">
+              <AnimatedNumber value={totals.calories} format={(n) => formatInt(n, locale)} />
+            </div>
             <div className="mt-1 text-muted">{t('metrics.units.kcal')}</div>
           </div>
         </ProgressRing>

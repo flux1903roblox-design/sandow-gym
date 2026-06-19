@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, Settings } from 'lucide-react'
 import { AppBar } from '@/components/ui/AppBar'
 import { RadarChart } from '@/components/charts/RadarChart'
 import { useAllHealthScores } from '@/data/hooks/useHealth'
+import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
 
 export default function HealthScoreScreen() {
   const { t } = useTranslation()
@@ -63,7 +64,9 @@ export default function HealthScoreScreen() {
         </div>
 
         <div className="mt-4 text-center">
-          <div className="text-7xl font-black tabular leading-none">{current?.score ?? '—'}</div>
+          <div className="text-7xl font-black tabular leading-none">
+            {current ? <AnimatedNumber value={current.score} format={(n) => String(Math.round(n))} /> : '—'}
+          </div>
           <p className="mt-2 text-muted">{t('healthScore.subtitle')}</p>
         </div>
 

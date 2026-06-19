@@ -3,8 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Clock, Dumbbell, Flame, Layers } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
-import { categoryGradient } from '@/lib/gradients'
-import { cn } from '@/lib/cn'
+import { heroForCategory } from '@/assets/img'
 import type { WorkoutProgram } from '@/db/types'
 
 const intensityTone = { intense: 'primary', moderate: 'secondary', light: 'neutral' } as const
@@ -15,13 +14,9 @@ export function ProgramCard({ program, trainerName }: { program: WorkoutProgram;
 
   return (
     <Card interactive onClick={() => navigate(`/workouts/${program.id}`)} className="flex items-center gap-4 p-3">
-      <div
-        className={cn(
-          'grid h-20 w-20 shrink-0 place-items-center rounded-2xl bg-gradient-to-br text-white/90',
-          categoryGradient(program.category),
-        )}
-      >
-        <Dumbbell className="h-8 w-8" />
+      <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl">
+        <img src={heroForCategory(program.category)} alt="" className="h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
       </div>
       <div className="min-w-0 flex-1">
         <h3 className="truncate font-bold">{program.title}</h3>

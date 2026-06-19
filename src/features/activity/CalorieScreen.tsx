@@ -9,6 +9,7 @@ import { useMetricSeries, useMetricValue } from '@/data/hooks/useMetrics'
 import { formatInt } from '@/lib/format'
 import { formatDate } from '@/lib/date'
 import { useUiStore } from '@/stores/ui.store'
+import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
 
 type Range = 'd' | 'w' | 'm' | 'a'
 const RANGE_DAYS: Record<Range, number> = { d: 7, w: 14, m: 30, a: 35 }
@@ -55,7 +56,7 @@ export default function CalorieScreen() {
             <Flame className="h-6 w-6" />
           </span>
           <div className="flex items-baseline gap-2">
-            <span className="text-5xl font-black tabular leading-none">{formatInt(calories, locale)}</span>
+            <AnimatedNumber value={calories} format={(n) => formatInt(n, locale)} className="text-5xl font-black tabular leading-none" />
             <span className="text-xl font-bold text-muted">{t('metrics.units.kcal')}</span>
           </div>
         </div>

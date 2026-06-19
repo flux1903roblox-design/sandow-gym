@@ -7,6 +7,7 @@ import { useMetricSeries, useMetricValue } from '@/data/hooks/useMetrics'
 import { usePrograms } from '@/data/hooks/useWorkouts'
 import { useTrainers } from '@/data/hooks/useTrainers'
 import { useUnreadCount } from '@/data/hooks/useNotifications'
+import { USER_PHOTO } from '@/assets/img'
 import { Avatar } from '@/components/ui/Avatar'
 import { Badge } from '@/components/ui/Badge'
 import { MetricCard } from '@/components/ui/MetricCard'
@@ -41,7 +42,7 @@ export default function HomeScreen() {
       <div className="px-5 pt-safe-t">
         <div className="flex items-center justify-between pt-4">
           <button onClick={() => navigate('/profile')} className="flex items-center gap-3 text-start">
-            <Avatar name={user.displayName} size="md" />
+            <Avatar name={user.displayName} src={USER_PHOTO} size="md" />
             <div>
               <p className="text-xs text-muted">{formatHeaderDate(Date.now(), locale)}</p>
               <h1 className="text-xl font-extrabold leading-tight">

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button'
 import { useSessionStore } from '@/stores/session.store'
 import { useUser } from '@/data/hooks/useUser'
 import { activeSession, completeSession, startSession } from '@/db/repositories/workoutRepo'
-import { activityGradient } from '@/lib/gradients'
+import { heroForActivity } from '@/assets/img'
 import { formatDuration } from '@/lib/format'
 import { cn } from '@/lib/cn'
 
@@ -95,8 +95,9 @@ export default function LiveSessionScreen() {
   const act = activity || 'Boxing'
 
   return (
-    <div className={cn('relative h-full bg-gradient-to-b text-white', activityGradient(act))}>
-      <div className="absolute inset-0 bg-black/45" />
+    <div className="relative h-full overflow-hidden text-white">
+      <img src={heroForActivity(act)} alt="" className="absolute inset-0 h-full w-full object-cover" />
+      <div className="absolute inset-0 bg-black/55" />
       <div className="relative flex h-full flex-col">
         <AppBar transparent title="" onBack={finish} />
 

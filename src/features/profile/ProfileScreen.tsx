@@ -8,6 +8,8 @@ import { BarTrend } from '@/components/charts/BarTrend'
 import { useUser } from '@/data/hooks/useUser'
 import { DAY_MS, formatDate, startOfDayMs } from '@/lib/date'
 import { useUiStore } from '@/stores/ui.store'
+import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
+import { USER_PHOTO } from '@/assets/img'
 
 export default function ProfileScreen() {
   const { t } = useTranslation()
@@ -39,7 +41,7 @@ export default function ProfileScreen() {
       </div>
 
       <div className="flex flex-col items-center px-5">
-        <Avatar name={user.displayName} size="xl" />
+        <Avatar name={user.displayName} src={USER_PHOTO} size="xl" />
         <h1 className="mt-4 text-2xl font-black">{user.displayName}</h1>
         <p className="text-muted">{user.location}</p>
         <div className="mt-2">
@@ -63,7 +65,9 @@ export default function ProfileScreen() {
         <div className="flex items-end justify-between">
           <div>
             <p className="text-sm text-muted">{t('profile.sandowScore')}</p>
-            <p className="text-4xl font-black tabular text-primary">{user.sandowScore}</p>
+            <p className="text-4xl font-black tabular text-primary">
+              <AnimatedNumber value={user.sandowScore} format={(n) => String(Math.round(n))} />
+            </p>
           </div>
           <Badge tone="neutral">{t('profile.weekly')}</Badge>
         </div>

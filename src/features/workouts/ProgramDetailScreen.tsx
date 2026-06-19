@@ -9,8 +9,7 @@ import { useTrainer } from '@/data/hooks/useTrainers'
 import { useUser } from '@/data/hooks/useUser'
 import { startSession } from '@/db/repositories/workoutRepo'
 import { useSessionStore } from '@/stores/session.store'
-import { categoryGradient } from '@/lib/gradients'
-import { cn } from '@/lib/cn'
+import { heroForCategory } from '@/assets/img'
 
 function Stat({ icon: Icon, value, label }: { icon: LucideIcon; value: string; label: string }) {
   return (
@@ -44,8 +43,9 @@ export default function ProgramDetailScreen() {
   return (
     <div className="flex h-full flex-col">
       <div className="no-scrollbar flex-1 overflow-y-auto">
-        <div className={cn('relative h-72 bg-gradient-to-br', categoryGradient(program.category))}>
-          <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/20 to-transparent" />
+        <div className="relative h-72 overflow-hidden">
+          <img src={heroForCategory(program.category)} alt="" className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/30 to-transparent" />
           <AppBar transparent title="" />
           <div className="absolute inset-x-0 bottom-0 p-5">
             <Badge tone="primary">

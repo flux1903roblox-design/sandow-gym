@@ -10,6 +10,7 @@ import { useLiveTracking } from '@/data/hooks/useLiveTracking'
 import { formatInt } from '@/lib/format'
 import { formatDate } from '@/lib/date'
 import { useUiStore } from '@/stores/ui.store'
+import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
 
 export default function ActivityScreen() {
   const { t } = useTranslation()
@@ -27,7 +28,7 @@ export default function ActivityScreen() {
     <div className="min-h-full pb-6">
       <AppBar title={t('activity.title')} />
       <div className="flex flex-col items-center px-5 pt-6">
-        <span className="text-6xl font-black tabular leading-none">{formatInt(steps, locale)}</span>
+        <AnimatedNumber value={steps} format={(n) => formatInt(n, locale)} className="text-6xl font-black tabular leading-none" />
         <p className="mt-2 text-muted">{t('activity.totalSteps')}</p>
       </div>
 

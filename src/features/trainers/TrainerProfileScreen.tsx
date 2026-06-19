@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { Avatar } from '@/components/ui/Avatar'
 import { useTrainer, useReviews } from '@/data/hooks/useTrainers'
+import { TRAINER_PHOTO } from '@/assets/img'
 import { timeAgo } from '@/lib/date'
 import { useUiStore } from '@/stores/ui.store'
 
@@ -28,7 +29,7 @@ export default function TrainerProfileScreen() {
     <div className="min-h-full pb-8">
       <AppBar title="" />
       <div className="flex flex-col items-center px-5">
-        <Avatar name={trainer.name} size="xl" />
+        <Avatar name={trainer.name} src={trainer.name === 'Farnese Vandimion' ? TRAINER_PHOTO : undefined} size="xl" />
         <h1 className="mt-4 flex items-center gap-2 text-2xl font-black">{trainer.name}</h1>
         <div className="mt-2 flex gap-2">
           {trainer.tags.map((tag) => (

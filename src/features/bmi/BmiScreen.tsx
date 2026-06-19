@@ -4,6 +4,7 @@ import { Scale, Settings } from 'lucide-react'
 import { AppBar } from '@/components/ui/AppBar'
 import { useUser } from '@/data/hooks/useUser'
 import { bmiCategory } from '@/lib/format'
+import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
 
 export default function BmiScreen() {
   const { t } = useTranslation()
@@ -31,7 +32,7 @@ export default function BmiScreen() {
           <Scale className="h-7 w-7" />
         </span>
         <div className="mt-6 flex items-baseline gap-2">
-          <span className="text-7xl font-black tabular leading-none">{bmi.toFixed(1)}</span>
+          <AnimatedNumber value={bmi} format={(n) => n.toFixed(1)} className="text-7xl font-black tabular leading-none" />
           <span className="text-2xl font-bold text-muted">{t('metrics.units.pt')}</span>
         </div>
         <p className="mt-3 text-lg text-muted">{t(`bmi.status.${cat.key}`)}</p>
