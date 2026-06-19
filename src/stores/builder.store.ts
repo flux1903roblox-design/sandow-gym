@@ -9,6 +9,7 @@ interface BuilderState {
   toggleEquipment: (e: Equipment) => void
   toggleMuscle: (m: Muscle) => void
   toggleExercise: (id: string) => void
+  setSelected: (ids: string[]) => void
   removeExercise: (id: string) => void
   swapExercise: (oldId: string, newId: string) => void
   reset: () => void
@@ -23,6 +24,7 @@ export const useBuilderStore = create<BuilderState>((set) => ({
   toggleEquipment: (e) => set((s) => ({ equipment: toggle(s.equipment, e) })),
   toggleMuscle: (m) => set((s) => ({ muscles: toggle(s.muscles, m) })),
   toggleExercise: (id) => set((s) => ({ selected: toggle(s.selected, id) })),
+  setSelected: (ids) => set({ selected: ids }),
   removeExercise: (id) => set((s) => ({ selected: s.selected.filter((x) => x !== id) })),
   swapExercise: (oldId, newId) =>
     set((s) => ({ selected: s.selected.map((x) => (x === oldId ? newId : x)) })),

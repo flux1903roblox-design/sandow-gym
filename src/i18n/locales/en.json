@@ -244,7 +244,15 @@
     "selected": "{{n}} selected",
     "start": "Start workout",
     "noResults": "No matching exercises — change the filter",
-    "swap": "Swap"
+    "swap": "Swap",
+    "next": "Next",
+    "back": "Back",
+    "front": "Front",
+    "rear": "Back",
+    "shuffle": "Auto-build",
+    "tapMuscles": "Tap the muscles you want to train",
+    "chooseEquipment": "What equipment do you have?",
+    "all": "All"
   },
   "active": {
     "title": "Active workout",
