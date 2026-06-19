@@ -19,7 +19,7 @@ export default defineConfig({
     react(),
     ...(useHttps ? [mkcert()] : []),
     VitePWA({
-      registerType: 'prompt',
+      registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
       devOptions: { enabled: false },
       manifest: {

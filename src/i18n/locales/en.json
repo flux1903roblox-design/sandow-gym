@@ -183,6 +183,7 @@
     "deviceSync": "Device sync",
     "healthKit": "Apple Health",
     "healthConnect": "Google Health Connect",
+    "deviceSyncNote": "Apple Health / Health Connect sync needs a native app — it is not possible in a PWA. For real steps: Activity tab → \"Start live tracking\" (phone sensors).",
     "notifications": "Notifications",
     "privacy": "Privacy",
     "shareData": "Share anonymous data",

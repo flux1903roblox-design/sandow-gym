@@ -87,6 +87,7 @@ export default function SettingsScreen() {
             onChange={(v) => void patchSettings({ deviceSync: { ...settings.deviceSync, healthConnectEnabled: v } })}
           />
         </Row>
+        <p className="px-4 py-3 text-xs leading-relaxed text-muted">{t('settings.deviceSyncNote')}</p>
       </Section>
 
       <Section title={t('settings.notifications')}>

@@ -183,6 +183,7 @@
     "deviceSync": "סנכרון מכשירים",
     "healthKit": "Apple Health",
     "healthConnect": "Google Health Connect",
+    "deviceSyncNote": "סנכרון Apple Health / Health Connect דורש אפליקציית native ואינו אפשרי ב-PWA. לצעדים אמיתיים: לשונית פעילות ← \"התחל מעקב חי\" (חיישני הטלפון).",
     "notifications": "התראות",
     "privacy": "פרטיות",
     "shareData": "שיתוף נתונים אנונימי",
