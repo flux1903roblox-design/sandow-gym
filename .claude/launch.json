@@ -4,7 +4,7 @@
     {
       "name": "sandow",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--", "--port", "4173", "--strictPort"],
+      "runtimeArgs": ["run", "preview"],
       "port": 4173
     }
   ]

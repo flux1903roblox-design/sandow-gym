@@ -22,8 +22,8 @@ import type {
   WorkoutSession,
 } from '@/db/types'
 
-/** Bump to force a full reseed (development mock data only). */
-export const SEED_VERSION = 1
+/** Bump to force a full reseed (clears + repopulates demo data on next load). */
+export const SEED_VERSION = 2
 
 const DAYS = 35
 
