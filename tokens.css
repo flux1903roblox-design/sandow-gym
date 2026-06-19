@@ -1,0 +1,75 @@
+/* tokens.css — Cal.com design tokens (light + dark)
+ * Import once in your global stylesheet. Values are HSL triples matching
+ * Tailwind's default gray scale, with Cal.com's confirmed brand endpoints.
+ * Use via the tailwind.config mapping (bg-default, text-emphasis, border-subtle, brand-default, ...).
+ */
+
+:root {
+  /* backgrounds */
+  --cal-bg: 0 0% 100%;                  /* white */
+  --cal-bg-subtle: 210 20% 98%;         /* gray-50  #f9fafb */
+  --cal-bg-muted: 220 14.3% 95.9%;      /* gray-100 #f3f4f6 */
+  --cal-bg-emphasis: 220 13% 91%;       /* gray-200 #e5e7eb */
+  --cal-bg-inverted: 221 39.3% 11%;     /* gray-900 #111827 */
+
+  /* borders */
+  --cal-border: 220 13% 91%;            /* gray-200 #e5e7eb */
+  --cal-border-subtle: 220 14.3% 95.9%; /* gray-100 #f3f4f6 */
+  --cal-border-emphasis: 216 12.2% 83.9%; /* gray-300 #d1d5db */
+  --cal-border-muted: 210 20% 98%;      /* gray-50 */
+  --cal-border-error: 0 84% 60%;        /* red-500-ish */
+
+  /* text */
+  --cal-text: 221 39.3% 11%;            /* gray-900 #111827 */
+  --cal-text-emphasis: 221 39.3% 11%;   /* gray-900 #111827 */
+  --cal-text-subtle: 220 8.9% 46.1%;    /* gray-500 #6b7280 */
+  --cal-text-muted: 218 10.6% 64.9%;    /* gray-400 #9ca3af */
+  --cal-text-inverted: 0 0% 100%;       /* white */
+
+  /* brand (black in light mode) */
+  --cal-brand: 221 39.3% 11%;           /* #111827 */
+  --cal-brand-emphasis: 0 0% 6.3%;      /* #101010 */
+  --cal-brand-subtle: 218 10.6% 64.9%;  /* gray-400 */
+  --cal-brand-text: 0 0% 100%;          /* white */
+
+  /* status (conventional Tailwind families; verify if exact parity needed) */
+  --cal-info: 217 91% 60%;              /* blue-500 */
+  --cal-success: 142 71% 45%;           /* green-500 */
+  --cal-attention: 25 95% 53%;          /* orange-500 */
+  --cal-error: 0 84% 60%;               /* red-500 */
+}
+
+.dark {
+  /* backgrounds */
+  --cal-bg: 0 0% 6.3%;                  /* ~#101010 */
+  --cal-bg-subtle: 215 27.9% 16.9%;     /* gray-800 #1f2937 */
+  --cal-bg-muted: 217 19.1% 26.7%;      /* gray-700 #374151 */
+  --cal-bg-emphasis: 215 13.8% 34.1%;   /* gray-600 #4b5563 */
+  --cal-bg-inverted: 210 20% 98%;       /* gray-50 */
+
+  /* borders */
+  --cal-border: 217 19.1% 26.7%;        /* gray-700 #374151 */
+  --cal-border-subtle: 215 27.9% 16.9%; /* gray-800 #1f2937 */
+  --cal-border-emphasis: 215 13.8% 34.1%; /* gray-600 #4b5563 */
+  --cal-border-muted: 215 27.9% 16.9%;  /* gray-800 */
+  --cal-border-error: 0 84% 60%;
+
+  /* text */
+  --cal-text: 210 20% 98%;              /* gray-50 #f9fafb */
+  --cal-text-emphasis: 210 20% 98%;     /* #f9fafb */
+  --cal-text-subtle: 218 10.6% 64.9%;   /* gray-400 #9ca3af */
+  --cal-text-muted: 220 8.9% 46.1%;     /* gray-500 #6b7280 */
+  --cal-text-inverted: 221 39.3% 11%;   /* gray-900 */
+
+  /* brand (white in dark mode) */
+  --cal-brand: 0 0% 100%;               /* white */
+  --cal-brand-emphasis: 0 0% 88.2%;     /* #e1e1e1 */
+  --cal-brand-subtle: 218 10.6% 64.9%;  /* gray-400 */
+  --cal-brand-text: 0 0% 0%;            /* black */
+
+  /* status */
+  --cal-info: 217 91% 60%;
+  --cal-success: 142 71% 45%;
+  --cal-attention: 25 95% 53%;
+  --cal-error: 0 84% 60%;
+}

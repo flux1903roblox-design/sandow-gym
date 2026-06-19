@@ -20,10 +20,10 @@ const variants: Record<Variant, string> = {
 }
 
 const sizes: Record<Size, string> = {
-  sm: 'h-9 px-3 text-sm gap-1.5 rounded-xl',
-  md: 'h-11 px-5 text-[15px] gap-2 rounded-2xl',
-  lg: 'h-14 px-6 text-base gap-2 rounded-2xl',
-  icon: 'h-11 w-11 rounded-2xl',
+  sm: 'h-9 px-3 text-sm gap-1.5 rounded-md',
+  md: 'h-11 px-5 text-[15px] gap-2 rounded-md',
+  lg: 'h-14 px-6 text-base gap-2 rounded-md',
+  icon: 'h-11 w-11 rounded-md',
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
@@ -34,7 +34,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     <button
       ref={ref}
       className={cn(
-        'inline-flex select-none items-center justify-center font-semibold',
+        'inline-flex select-none items-center justify-center font-medium',
         'transition-[transform,filter,background-color] duration-150 active:scale-[0.97]',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-bg',
         'disabled:opacity-50 disabled:pointer-events-none',

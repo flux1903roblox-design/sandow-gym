@@ -4,13 +4,16 @@
 @import '@fontsource/heebo/800.css';
 @import '@fontsource/heebo/900.css';
 
+/* Cal.com design tokens (light + dark) — semantic source of truth for all colors. */
+@import '../../tokens.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html,

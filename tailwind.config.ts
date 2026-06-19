@@ -1,31 +1,52 @@
 import type { Config } from 'tailwindcss'
 
+/**
+ * Colors map onto the Cal.com semantic tokens in `tokens.css` (light grayscale,
+ * black brand). The app's existing class names stay the same (bg-bg, bg-surface,
+ * text-foreground, bg-primary, …) so re-theming happens here, once, for the whole app.
+ * `<alpha-value>` keeps opacity utilities (bg-bg/70) working.
+ */
 export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        bg: '#0A0B0D',
-        surface: '#16181D',
-        'surface-2': '#1F2228',
-        'surface-3': '#272A32',
-        border: '#26282F',
-        foreground: '#F4F5F7',
-        muted: '#8A8F98',
-        'muted-2': '#5E636E',
-        primary: { DEFAULT: '#FF6A2B', fg: '#0A0B0D', soft: '#2A1A11' },
-        secondary: { DEFAULT: '#3B82F6', fg: '#FFFFFF', soft: '#10203A' },
-        success: { DEFAULT: '#22C55E', fg: '#05140A' },
-        warning: '#FBBF24',
-        destructive: '#EF4444',
+        // page vs card: subtle gray page, white cards (separated by borders — Cal.com way)
+        bg: 'hsl(var(--cal-bg-subtle) / <alpha-value>)',
+        surface: 'hsl(var(--cal-bg) / <alpha-value>)',
+        'surface-2': 'hsl(var(--cal-bg-muted) / <alpha-value>)',
+        'surface-3': 'hsl(var(--cal-bg-emphasis) / <alpha-value>)',
+        border: 'hsl(var(--cal-border) / <alpha-value>)',
+        foreground: 'hsl(var(--cal-text-emphasis) / <alpha-value>)',
+        muted: 'hsl(var(--cal-text-subtle) / <alpha-value>)',
+        'muted-2': 'hsl(var(--cal-text-muted) / <alpha-value>)',
+        // single black primary action per view
+        primary: {
+          DEFAULT: 'hsl(var(--cal-brand) / <alpha-value>)',
+          fg: 'hsl(var(--cal-brand-text) / <alpha-value>)',
+          soft: 'hsl(var(--cal-bg-muted) / <alpha-value>)',
+        },
+        // blue kept as "info" only, used sparingly (e.g. rest timer)
+        secondary: {
+          DEFAULT: 'hsl(var(--cal-info) / <alpha-value>)',
+          fg: '#ffffff',
+          soft: 'hsl(var(--cal-bg-muted) / <alpha-value>)',
+        },
+        success: { DEFAULT: 'hsl(var(--cal-success) / <alpha-value>)', fg: '#ffffff' },
+        warning: 'hsl(var(--cal-attention) / <alpha-value>)',
+        destructive: 'hsl(var(--cal-error) / <alpha-value>)',
       },
       fontFamily: {
-        sans: ['Heebo', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
-        display: ['Heebo', 'system-ui', 'sans-serif'],
+        sans: ['Heebo', 'Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        display: ['Heebo', 'Inter', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
-        card: '1.75rem',
-        '4xl': '2rem',
+        // Cal.com uses a consistent small radius everywhere — cap the big steps.
+        xl: '0.5rem',
+        '2xl': '0.5rem',
+        '3xl': '0.625rem',
+        card: '0.5rem',
+        '4xl': '0.625rem',
       },
       spacing: {
         'safe-t': 'env(safe-area-inset-top)',
@@ -37,9 +58,10 @@ export default {
         phone: '440px',
       },
       boxShadow: {
-        card: '0 1px 0 0 rgba(255,255,255,0.03) inset, 0 8px 24px -12px rgba(0,0,0,0.6)',
-        glow: '0 8px 32px -8px rgba(255,106,43,0.45)',
-        'glow-blue': '0 8px 32px -8px rgba(59,130,246,0.45)',
+        // borders over shadows — keep everything subtle
+        card: '0 1px 2px 0 rgb(16 24 40 / 0.04)',
+        glow: '0 1px 2px 0 rgb(16 24 40 / 0.06)',
+        'glow-blue': '0 1px 2px 0 rgb(16 24 40 / 0.06)',
       },
       keyframes: {
         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
